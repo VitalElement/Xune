@@ -3,7 +3,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <RootNamespace>Xune.Gui</RootNamespace>
+    <RootNamespace>Xune</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" /> 
