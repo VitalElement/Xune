@@ -1,0 +1,60 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Xune.Controls"
+             xmlns:views="clr-namespace:Xune.Views"
+             xmlns:viewModels="clr-namespace:Xune.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="viewModels:MainViewModel"
+             x:CompileBindings="True"
+             x:Class="Xune.Gui.Views.MainView">
+    <Panel>
+        <Border IsHitTestVisible="False" BorderThickness="2 0 2 2" >
+            <Panel>
+                <Image Source="/Assets/backdrop.png" Opacity="0.15" Stretch="UniformToFill" />
+            </Panel>
+        </Border>
+        
+        <DockPanel Margin="0 60 0 0">
+            <Panel DockPanel.Dock="Bottom">
+                <controls:SpectrumDisplay DataContext="{Binding TrackStatus}" FFTData="{Binding InFFTData}" Foreground="#EB4343" VerticalAlignment="Bottom" Height="100" />
+                <views:AudioControlPanel  DataContext="{Binding DiscChanger}" Margin="15" HorizontalAlignment="Right" />
+                <views:TrackStatusView Margin="50 0" DataContext="{Binding TrackStatus}" HorizontalAlignment="Center" />
+            </Panel>
+            <Panel>
+                <DockPanel>
+                    <Panel DockPanel.Dock="Left" DataContext="{Binding CollectionExplorer}" Width="250" TextBlock.FontSize="12">
+                        <ListBox Items="{Binding Artists}" Background="Transparent">
+                            <ListBox.Styles>
+                                <Style Selector="ListBoxItem">
+                                    <Setter Property="Padding" Value="0" />
+                                </Style>
+                            </ListBox.Styles>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="12" Text="{Binding  Name}" Margin="40 5" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Panel>
+                    <Panel DockPanel.Dock="Right" DataContext="{Binding CollectionExplorer}" Width="250">
+                        <ListBox Items="{Binding Tracks}" Background="Transparent">
+                            <ListBox.Styles>
+                                <Style Selector="ListBoxItem">
+                                    <Setter Property="Padding" Value="0" />
+                                </Style>
+                            </ListBox.Styles>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="12" Text="{Binding  Title}" Margin="40 5" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Panel>
+                    <views:CollectionExplorerView DataContext="{Binding CollectionExplorer}" />
+                </DockPanel>
+            </Panel>
+        </DockPanel>
+    </Panel>
+</UserControl>

@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" Name="audioControl" d:DesignHeight="450"
+             x:Class="Xune.Views.AudioControlPanel">
+    <Panel>
+        <Panel.Styles>
+            <Style Selector=":is(Button)">
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+            </Style>
+            <Style Selector=":is(Button):not(:pointerover):not(:pressed)">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+        </Panel.Styles>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <ToggleButton Name="ShuffleButton" Width="36">
+                <Image Source="{StaticResource Shuffle}" Width="20" Height="15" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+            </ToggleButton>
+            <Button Name="BackButton" HorizontalAlignment="Center" Width="36" Command="{Binding BackCommand}">
+                <Image Source="{StaticResource Back}" Width="20" Height="10" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+            </Button>
+            <Button Name="PlayButton" HorizontalAlignment="Center" Width="36" Command="{Binding PlayCommand}">
+                <Panel>
+                    <Image Source="{StaticResource Play}" IsVisible="{Binding !IsPlaying}" Width="20"
+                           Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Image Source="{StaticResource Pause}" IsVisible="{Binding IsPlaying}" Width="20"
+                           Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </Panel>
+            </Button>
+            <Button Name="FwdButton" HorizontalAlignment="Center" Width="36" Command="{Binding ForwardCommand}">
+                <Image Source="{StaticResource Forward}" Width="20" Height="10" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+            </Button>
+            <ToggleButton Name="LoopButton" Width="36">
+                <Image Source="{StaticResource Loop}" Width="20" Height="15" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+            </ToggleButton>
+            <Panel Width="14" />
+        </StackPanel>
+    </Panel>
+</UserControl>
