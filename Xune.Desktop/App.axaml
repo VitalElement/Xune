@@ -12,7 +12,6 @@
         <StyleInclude Source="avares://Xune.Desktop/GlobalStyles.axaml" />
         <StyleInclude Source="avares://Xune.Desktop/Controls/SeekSlider.axaml" />
         <StyleInclude Source="avares://Xune.Desktop/Controls/VolumeSlider.axaml" />
-        <StyleInclude Source="avares://Xune.Desktop/Controls/TransitioningContentControl.axaml" />
     </Application.Styles>
     <NativeMenu.Menu>
         <NativeMenu />
