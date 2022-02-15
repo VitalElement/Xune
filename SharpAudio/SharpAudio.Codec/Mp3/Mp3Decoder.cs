@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using NLayer;
 
 namespace SharpAudio.Codec.Mp3
@@ -12,6 +13,8 @@ namespace SharpAudio.Codec.Mp3
         public Mp3Decoder(Stream s)
         {
             _mp3Stream = new MpegFile(s);
+            
+            _mp3Stream.SetEQ(Enumerable.Repeat(-5.0f, 32).ToArray());
 
             _audioFormat.Channels = _mp3Stream.Channels;
             _audioFormat.BitsPerSample = 16;
