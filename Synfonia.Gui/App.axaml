@@ -1,0 +1,19 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Synfonia" x:Class="Synfonia.App">
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme Mode="Light" />
+        <StyleInclude Source="avares://Synfonia.Gui/Styles.axaml" />
+        <StyleInclude Source="avares://Synfonia.Gui/Icons.axaml" />
+        <StyleInclude Source="avares://Synfonia.Gui/GlobalStyles.axaml" />
+        <StyleInclude Source="avares://Synfonia.Gui/Controls/SeekSlider.axaml" />
+        <StyleInclude Source="avares://Synfonia.Gui/Controls/VolumeSlider.axaml" />
+    </Application.Styles>
+    <NativeMenu.Menu>
+        <NativeMenu />
+    </NativeMenu.Menu>
+</Application>
