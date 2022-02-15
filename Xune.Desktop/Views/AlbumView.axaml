@@ -5,7 +5,6 @@
              xmlns:i="using:Avalonia.Xaml.Interactivity"
              xmlns:b="using:Xune.Behaviors"
              xmlns:converters="using:Xune.Converters"
-             xmlns:c="using:Xune.Controls"
              xmlns:viewModels="clr-namespace:Xune.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:CompileBindings="True"
@@ -15,7 +14,7 @@
         <converters:IsNullConverter x:Key="IsNullConverter" />
         <converters:AlbumTitleToPlaceholderConverter x:Key="AlbumTitleToPlaceholderConverter" />
     </UserControl.Resources>
-    <StackPanel Margin="20" Spacing="8"  Width="100" x:Name="PART_Container">
+    <StackPanel Margin="20" Spacing="8" Width="100" x:Name="PART_Container">
         <i:Interaction.Behaviors>
             <b:ContextDragBehavior Context="{Binding}" />
         </i:Interaction.Behaviors>
@@ -49,8 +48,27 @@
                 </Panel>
             </Border>
         </DockPanel>
- 
-        <TextBlock Text="{Binding Title}" FontSize="12" Foreground="#6c6e70" TextTrimming="CharacterEllipsis" />
-        <TextBlock Text="{Binding Artist}" FontSize="10" Foreground="#9d9d9d" TextTrimming="CharacterEllipsis" />
+
+        <TextBlock Text="{Binding Title}" FontSize="12" Foreground="#6c6e70" ToolTip.Tip="{Binding Title}">
+            <TextBlock.OpacityMask>
+                <LinearGradientBrush StartPoint="100%,0%" EndPoint="80%,0%">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="#00FFFFFF" Offset="0.1" />
+                        <GradientStop Color="#FFFFFFFF" Offset="1" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </TextBlock.OpacityMask>
+        </TextBlock>
+
+        <TextBlock Text="{Binding Artist}" FontSize="10" Foreground="#9d9d9d" ToolTip.Tip="{Binding Title}">
+            <TextBlock.OpacityMask>
+                <LinearGradientBrush StartPoint="100%,0%" EndPoint="80%,0%">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="#00FFFFFF" Offset="0.1" />
+                        <GradientStop Color="#FFFFFFFF" Offset="1" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </TextBlock.OpacityMask>
+        </TextBlock>
     </StackPanel>
 </UserControl>
