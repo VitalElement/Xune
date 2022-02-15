@@ -11,8 +11,12 @@
   <Panel DragDrop.AllowDrop="True">
     <DockPanel TextBlock.FontWeight="Bold">
       <Border BoxShadow="2 2 5 #55000000" DockPanel.Dock="Left" Margin="10" VerticalAlignment="Center">
-        <Image Stretch="UniformToFill" Height="75" Width="75"
-               Source="{Binding AlbumCover}" />
+        <Panel Background="White">
+          <Image Stretch="Uniform" Height="60" Width="60"
+                 Source="/Assets/xune-cube.png" Opacity="0.5" />
+          <Image Stretch="UniformToFill" Height="75" Width="75"
+                 Source="{Binding AlbumCover}" />
+        </Panel>
       </Border>
       
       <StackPanel VerticalAlignment="Center" Spacing="15">
