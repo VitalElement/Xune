@@ -1,0 +1,35 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="using:Synfonia.Controls"
+             xmlns:viewModels="clr-namespace:Synfonia.ViewModels"
+             x:DataType="viewModels:TrackStatusViewModel"
+             x:CompileBindings="True"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="100"
+             x:Class="Synfonia.Views.TrackStatusView">
+  <Panel DragDrop.AllowDrop="True">
+    <DockPanel TextBlock.FontWeight="Bold">
+      <Border BoxShadow="2 2 5 #55000000" DockPanel.Dock="Left" Margin="10" VerticalAlignment="Center">
+        <Image Stretch="UniformToFill" Height="75" Width="75"
+               Source="{Binding AlbumCover}" />
+      </Border>
+      
+      <StackPanel VerticalAlignment="Center" Spacing="15">
+        <c:ScrollingTextBlock HorizontalAlignment="Center" Width="250" Text="{Binding FullTrack}" Foreground="#6c6e70"
+                                     FontSize="12" />
+        <c:SeekSlider Height="12" Value="{Binding Position}" Maximum="1.0" Minimum="0" Foreground="Red"
+                      IsSeeking="{Binding IsTrackSeeking, Mode=TwoWay}"
+                      SeekValue="{Binding SeekPosition, Mode=TwoWay}" />
+        <DockPanel>
+          <TextBlock DockPanel.Dock="Left" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                     Text="{Binding CurrentTime}" Foreground="#6c6e70" FontSize="12" />
+
+          <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                     Text="{Binding CurrentDuration}" Foreground="#6c6e70" FontSize="12" />
+          <Panel />
+        </DockPanel>
+      </StackPanel>
+    </DockPanel>
+  </Panel>
+</UserControl>
