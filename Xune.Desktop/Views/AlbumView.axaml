@@ -1,0 +1,56 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="using:Avalonia.Xaml.Interactivity"
+             xmlns:b="using:Xune.Behaviors"
+             xmlns:converters="using:Xune.Converters"
+             xmlns:c="using:Xune.Controls"
+             xmlns:viewModels="clr-namespace:Xune.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:CompileBindings="True"
+             x:DataType="viewModels:AlbumViewModel"
+             x:Class="Xune.Views.AlbumView">
+    <UserControl.Resources>
+        <converters:IsNullConverter x:Key="IsNullConverter" />
+        <converters:AlbumTitleToPlaceholderConverter x:Key="AlbumTitleToPlaceholderConverter" />
+    </UserControl.Resources>
+    <StackPanel Margin="20" Spacing="8"  Width="100" x:Name="PART_Container">
+        <i:Interaction.Behaviors>
+            <b:ContextDragBehavior Context="{Binding}" />
+        </i:Interaction.Behaviors>
+        <DockPanel LastChildFill="True">
+            <Border DockPanel.Dock="Top" BoxShadow="2 2 5 #55000000">
+                <Panel>
+                    <i:Interaction.Behaviors>
+                        <b:CommandOnDoubleClickBehavior Command="{Binding LoadAlbumCommand}" />
+                    </i:Interaction.Behaviors>
+                    <Panel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Play" Command="{Binding LoadAlbumCommand}" />
+                            <MenuItem Header="Get Album Artwork" Command="{Binding GetArtworkCommand}" />
+                        </ContextMenu>
+                    </Panel.ContextMenu>
+                    <Image Width="{Binding #PART_Container.Width}" Stretch="Uniform" Source="{Binding Cover}" />
+                    <Panel Height="{Binding #PART_Container.Width}"
+                           Background="{Binding Title, Converter={StaticResource AlbumTitleToPlaceholderConverter}}"
+                           IsVisible="{Binding Cover, Converter={StaticResource IsNullConverter}}">
+                        <DrawingPresenter Height="70" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DrawingPresenter.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="White"
+                                                         Geometry="M12 3V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V7H18V3H12Z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingPresenter.Drawing>
+                        </DrawingPresenter>
+                    </Panel>
+                </Panel>
+            </Border>
+        </DockPanel>
+ 
+        <TextBlock Text="{Binding Title}" FontSize="12" Foreground="#6c6e70" TextTrimming="CharacterEllipsis" />
+        <TextBlock Text="{Binding Artist}" FontSize="10" Foreground="#9d9d9d" TextTrimming="CharacterEllipsis" />
+    </StackPanel>
+</UserControl>

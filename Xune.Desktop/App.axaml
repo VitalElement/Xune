@@ -1,0 +1,19 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Xune" x:Class="Xune.App">
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme Mode="Light" />
+        <StyleInclude Source="avares://Xune.Desktop/Styles.axaml" />
+        <StyleInclude Source="avares://Xune.Desktop/Icons.axaml" />
+        <StyleInclude Source="avares://Xune.Desktop/GlobalStyles.axaml" />
+        <StyleInclude Source="avares://Xune.Desktop/Controls/SeekSlider.axaml" />
+        <StyleInclude Source="avares://Xune.Desktop/Controls/VolumeSlider.axaml" />
+    </Application.Styles>
+    <NativeMenu.Menu>
+        <NativeMenu />
+    </NativeMenu.Menu>
+</Application>
