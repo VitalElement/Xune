@@ -168,7 +168,7 @@ namespace SharpAudio.Codec.FFmpeg
                 if (_isDisposed)
                     break;
 
-                Thread.Sleep(1);
+                Thread.Sleep(10);
 
                 if (_slidestream.Length > sampleByteSize)
                 {
