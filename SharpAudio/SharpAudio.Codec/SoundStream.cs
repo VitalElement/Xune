@@ -47,7 +47,7 @@ namespace SharpAudio.Codec
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            _decoder = new Mp3Decoder(stream);
+            _decoder = new FFmpegDecoder(stream);
             
             _streamThread = new Thread(MainLoop)
             {
