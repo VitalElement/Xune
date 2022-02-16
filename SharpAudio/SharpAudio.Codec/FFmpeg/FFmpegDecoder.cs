@@ -172,24 +172,18 @@ namespace SharpAudio.Codec.FFmpeg
                 }
 
                 var packet = _packetEnum.Current;
-                using var audioFrame = new AudioFrame(_DESIRED_CHANNEL_COUNT, 1024, AVSampleFormat.AV_SAMPLE_FMT_S16, 44100);
-                using var converter = new SampleConverter(audioFrame);
+
                 foreach (var frame in _audioStream.ReadFrame(packet))
                 {
                     converter.ConvertFrame(frame, out var x, out var y);
-                     // using var fs = new FileStream("test16.raw", FileMode.Append | FileMode.OpenOrCreate);
-                    // fs.Seek(fs.Length, SeekOrigin.Begin);
-                    // fs.Write(interleaved);
                     var data = audioFrame.GetData()[0];
                     _slidestream.Write(data, 0, data.Length);
                 }
-
             }
         }
 
         public override long GetSamples(int samples, ref byte[] data)
         {
- 
             data = new byte[samples];
             var res = _slidestream.Read(data, 0, samples);
 
