@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>iTunesSearch</id>
+        <version>$version$</version>
+        <title>iTunesSearch</title>
+        <authors>Dan Esparza</authors>
+        <owners>danesparza</owners>
+        <projectUrl>https://github.com/danesparza/iTunesSearch</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/danesparza/iTunesSearch/master/ITunes_12_logo.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>.NET Wrapper for the iTunes search API.</description>
+        <summary />
+        <releaseNotes>See project site for latest release notes</releaseNotes>
+        <copyright>Copyright 2014</copyright>
+        <language>en-US</language>
+        <tags>itunes search artwork tv show movies</tags>
+    </metadata>
+    <files>
+        <file src="bin\Release\iTunesSearch.Library.dll" target="lib\net40\iTunesSearch.Library.dll" />
+    </files>
+</package>
