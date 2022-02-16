@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EmguFFmpeg" Version="1.0.17" />
     <PackageReference Include="ReactiveUI" Version="10.3.6" />
     <PackageReference Include="System.Reactive" Version="4.4.1" />
     <PackageReference Include="LiteDB" Version="5.0.7" />

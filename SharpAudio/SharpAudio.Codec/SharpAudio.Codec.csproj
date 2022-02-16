@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EmguFFmpeg" Version="1.0.17" />
     <PackageReference Include="NLayer.Core" Version="1.15.0" />
     <PackageReference Include="NVorbis" Version="0.10.4" />
     <PackageReference Include="System.Memory" Version="4.5.4" />

@@ -11,7 +11,7 @@ namespace SharpAudio.Codec.FFmpeg
         public AVPacket* av_packet;
         public AVFrame* av_src_frame;
         public AVFrame* av_dst_frame;
-        public AVCodecContext* av_codecctx;
+        public AVCodecContext* CodecContext;
         public AVCodec* avcodec;
         public int _streamIndex;
     }
