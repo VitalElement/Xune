@@ -155,15 +155,25 @@ namespace SharpAudio.Codec.FFmpeg
 
         private unsafe void MainLoop()
         {
+            using var audioFrame = new AudioFrame(
+                _DESIRED_CHANNEL_COUNT,
+                1024,
+                _DESIRED_SAMPLE_FORMAT,
+                _DESIRED_SAMPLE_RATE);
+
+            using var converter = new SampleConverter(audioFrame);
+            
             while (true)
             {
                 if (_isDisposed)
                     break;
 
                 Thread.Sleep(1);
-                
+
                 if (_slidestream.Length > sampleByteSize)
+                {
                     continue;
+                }
 
                 if (!_packetEnum.MoveNext())
                 {
