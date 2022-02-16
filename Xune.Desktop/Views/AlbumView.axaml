@@ -5,7 +5,6 @@
              xmlns:i="using:Avalonia.Xaml.Interactivity"
              xmlns:b="using:Xune.Behaviors"
              xmlns:converters="using:Xune.Converters"
-             xmlns:c="using:Xune.Controls"
              xmlns:viewModels="clr-namespace:Xune.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:CompileBindings="True"
@@ -15,7 +14,7 @@
         <converters:IsNullConverter x:Key="IsNullConverter" />
         <converters:AlbumTitleToPlaceholderConverter x:Key="AlbumTitleToPlaceholderConverter" />
     </UserControl.Resources>
-    <StackPanel Margin="20" Spacing="8"  Width="100" x:Name="PART_Container">
+    <StackPanel Margin="20" Spacing="8" Width="100" x:Name="PART_Container">
         <i:Interaction.Behaviors>
             <b:ContextDragBehavior Context="{Binding}" />
         </i:Interaction.Behaviors>
@@ -32,25 +31,34 @@
                         </ContextMenu>
                     </Panel.ContextMenu>
                     <Image Width="{Binding #PART_Container.Width}" Stretch="Uniform" Source="{Binding Cover}" />
-                    <Panel Height="{Binding #PART_Container.Width}"
-                           Background="{Binding Title, Converter={StaticResource AlbumTitleToPlaceholderConverter}}"
+                    <Panel Height="{Binding #PART_Container.Width}" Background="White"
                            IsVisible="{Binding Cover, Converter={StaticResource IsNullConverter}}">
-                        <DrawingPresenter Height="70" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <DrawingPresenter.Drawing>
-                                <DrawingGroup>
-                                    <DrawingGroup.Children>
-                                        <GeometryDrawing Brush="White"
-                                                         Geometry="M12 3V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V7H18V3H12Z" />
-                                    </DrawingGroup.Children>
-                                </DrawingGroup>
-                            </DrawingPresenter.Drawing>
-                        </DrawingPresenter>
+                        <Image Source="/Assets/xune-cube.png" Opacity="0.5" Height="70" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </Panel>
                 </Panel>
             </Border>
         </DockPanel>
- 
-        <TextBlock Text="{Binding Title}" FontSize="12" Foreground="#6c6e70" TextTrimming="CharacterEllipsis" />
-        <TextBlock Text="{Binding Artist}" FontSize="10" Foreground="#9d9d9d" TextTrimming="CharacterEllipsis" />
+
+        <TextBlock Text="{Binding Title}" FontSize="12" Foreground="#6c6e70" ToolTip.Tip="{Binding Title}">
+            <TextBlock.OpacityMask>
+                <LinearGradientBrush StartPoint="100%,0%" EndPoint="80%,0%">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="#00FFFFFF" Offset="0.1" />
+                        <GradientStop Color="#FFFFFFFF" Offset="1" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </TextBlock.OpacityMask>
+        </TextBlock>
+
+        <TextBlock Text="{Binding Artist}" FontSize="10" Foreground="#9d9d9d" ToolTip.Tip="{Binding Title}">
+            <TextBlock.OpacityMask>
+                <LinearGradientBrush StartPoint="100%,0%" EndPoint="80%,0%">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="#00FFFFFF" Offset="0.1" />
+                        <GradientStop Color="#FFFFFFFF" Offset="1" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </TextBlock.OpacityMask>
+        </TextBlock>
     </StackPanel>
 </UserControl>

@@ -99,7 +99,6 @@ namespace SharpAudio.Codec
 
             Source?.Stop();
             Source?.Dispose();
-            _receiver?.Dispose();
         }
 
         public void Send(byte[] data)

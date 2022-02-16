@@ -11,13 +11,30 @@
   <Panel DragDrop.AllowDrop="True">
     <DockPanel TextBlock.FontWeight="Bold">
       <Border BoxShadow="2 2 5 #55000000" DockPanel.Dock="Left" Margin="10" VerticalAlignment="Center">
-        <Image Stretch="UniformToFill" Height="75" Width="75"
-               Source="{Binding AlbumCover}" />
+        <Panel Background="White">
+          <Image Stretch="Uniform" Height="60" Width="60"
+                 Source="/Assets/xune-cube.png" Opacity="0.5" />
+          <Image Stretch="UniformToFill" Height="75" Width="75"
+                 Source="{Binding AlbumCover}" />
+        </Panel>
       </Border>
       
       <StackPanel VerticalAlignment="Center" Spacing="15">
-        <c:ScrollingTextBlock HorizontalAlignment="Center" Width="250" Text="{Binding FullTrack}" Foreground="#6c6e70"
-                                     FontSize="12" />
+        <TransitioningContentControl Content="{Binding TitleStatus}" Width="250"  Foreground="#6c6e70"
+                                       FontSize="12">
+          <TransitioningContentControl.OpacityMask>
+            <LinearGradientBrush StartPoint="100%,0%" EndPoint="80%,0%">
+              <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#00FFFFFF" Offset="0.1" /> 
+                <GradientStop Color="#FFFFFFFF" Offset="1" />
+              </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </TransitioningContentControl.OpacityMask>
+          <TransitioningContentControl.PageTransition>
+            <CrossFade Duration="0:0:0.125" FadeInEasing="0.4,0,0.6,1" FadeOutEasing="0.4,0,0.6,1" />
+          </TransitioningContentControl.PageTransition>
+        </TransitioningContentControl>
+        
         <c:SeekSlider Height="12" Value="{Binding Position}" Maximum="1.0" Minimum="0" Foreground="Red"
                       IsSeeking="{Binding IsTrackSeeking, Mode=TwoWay}"
                       SeekValue="{Binding SeekPosition, Mode=TwoWay}" />

@@ -4,6 +4,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
+using Avalonia.Threading;
 using ReactiveUI;
 using Xune.Backend;
 
@@ -25,6 +26,7 @@ namespace Xune.ViewModels
         private string _status;
         private string _trackTitle;
         private string _albumTitle;
+        private string _titleStatus;
 
         public TrackStatusViewModel(DiscChanger discChanger, LibraryManager libraryManager)
         {
@@ -54,9 +56,43 @@ namespace Xune.ViewModels
             Observable.FromEventPattern<string>(libraryManager, nameof(libraryManager.StatusChanged))
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .Subscribe(x => Status = x.EventArgs);
+
+            DispatcherTimer.Run(OnTrackTitleTimerTick, TimeSpan.FromSeconds(5));
+        }
+
+        private int _titleIndex;
+
+        private bool OnTrackTitleTimerTick()
+        {
+            switch (_titleIndex)
+            {
+                case 0:
+                    TitleStatus = TrackTitle;
+                    break;
+                
+                case 1:
+                    TitleStatus = AlbumTitle;
+                    break;
+                    
+                case 2:
+                    TitleStatus = Artist;
+                    _titleIndex = -1;
+                    break;
+                    
+            }
+
+            _titleIndex++;
+            
+            return true;
         }
 
         public string FullTrack => Artist + " - " + AlbumTitle + " - "  + TrackTitle;
+
+        public string TitleStatus
+        {
+            get => _titleStatus;
+            set => this.RaiseAndSetIfChanged(ref _titleStatus, value);
+        }
 
         public object AlbumCover
         {
@@ -178,7 +214,7 @@ namespace Xune.ViewModels
         private void LoadTrack(Track track)
         {
             SeekPosition = 0;
-
+            
             if (track is null) return;
 
             RxApp.MainThreadScheduler.Schedule(async () => { AlbumCover = await LoadCoverAsync(track); });
@@ -196,6 +232,9 @@ namespace Xune.ViewModels
             CurrentDuration = FormatTimeSpan(Duration);
             
             this.RaisePropertyChanged(nameof(FullTrack));
+            
+            _titleIndex = 0;
+            OnTrackTitleTimerTick();
         }
     }
 }

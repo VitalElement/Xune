@@ -3,13 +3,13 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <RootNamespace>Xune.Gui</RootNamespace>
+    <RootNamespace>Xune</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" /> 
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0018686-beta" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.999-cibuild0018686-beta" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.999-cibuild0018686-beta" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0018742-beta" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.999-cibuild0018748-beta" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.999-cibuild0018748-beta" />
     <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.11" />
     <PackageReference Include="DynamicData" Version="*" />
     <PackageReference Include="Nito.AsyncEx.Coordination" Version="*" />
