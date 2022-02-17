@@ -81,10 +81,7 @@ namespace SharpAudio
         /// <returns></returns>
         public static AudioEngine CreateDefault(AudioEngineOptions options)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                return CreateXAudio(options);
-            else
-                return CreateOpenAL(options);
+            return CreateOpenAL(options);
         }
 
         /// <summary>

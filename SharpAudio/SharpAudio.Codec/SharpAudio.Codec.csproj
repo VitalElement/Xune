@@ -8,14 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EmguFFmpeg" Version="1.0.17" />
     <PackageReference Include="NLayer.Core" Version="1.15.0" />
     <PackageReference Include="NVorbis" Version="0.10.4" />
     <PackageReference Include="System.Memory" Version="4.5.4" />
-    <PackageReference Include="FFmpeg.AutoGen" Version="4.4.1.1" />
+    <PackageReference Include="FFmpeg.AutoGen" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SharpAudio\SharpAudio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="FFmpeg\FFmpegDecoder.cs.rej" />
   </ItemGroup>
 
 </Project>
