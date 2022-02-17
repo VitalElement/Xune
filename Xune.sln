@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpAudio.ALBinding", "Sha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpAudio.Codec", "SharpAudio\SharpAudio.Codec\SharpAudio.Codec.csproj", "{58F060C4-787A-42D0-8945-8423E59B6DA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmguFFmpeg", "EmguFFmpeg\EmguFFmpeg.csproj", "{1D2D8389-27A2-4004-9937-76D954F09A5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmguFFmpegX", "EmguFFmpegX\EmguFFmpegX.csproj", "{1D2D8389-27A2-4004-9937-76D954F09A5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
