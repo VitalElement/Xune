@@ -25,7 +25,7 @@ namespace Xune.Backend
 
         public LibraryManager()
         {
-            Database = new LiteDatabase(Path.Combine(Path.GetDirectoryName(typeof(LibraryManager).Assembly.Location), "library.db"));
+            Database = new LiteDatabase(Path.Combine(AppContext.BaseDirectory, "library.db"));
             _dbLock = new AsyncLock();
             Albums = new ObservableCollection<Album>();
             Artists = new ObservableCollection<Artist>();
