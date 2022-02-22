@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <RootNamespace>Xune</RootNamespace>
+    <RestoreAdditionalProjectSources Condition="$(PublishNativeAot) == True">
+      https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json;
+      $(RestoreAdditionalProjectSources)
+    </RestoreAdditionalProjectSources>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" /> 
@@ -14,5 +18,6 @@
     <PackageReference Include="DynamicData" Version="*" />
     <PackageReference Include="Nito.AsyncEx.Coordination" Version="*" />
     <ProjectReference Include="..\Xune.Backend\Xune.Backend.csproj" />
+    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="7.0.0-*" Condition="$(PublishNativeAot) == True" />
   </ItemGroup>
 </Project>
